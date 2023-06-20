@@ -15,16 +15,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_143348) do
   enable_extension "plpgsql"
 
   create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_requests_on_trip_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
+    t.string "destination"
+    t.integer "user_id"
+    t.string "theme"
+    t.date "date"
+    t.float "budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "nationality"
+    t.string "email"
+    t.string "interests"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
