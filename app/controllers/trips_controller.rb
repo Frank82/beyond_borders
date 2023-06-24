@@ -13,14 +13,14 @@ class TripsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @trip = Trip.new(trip_params)
-    @trip.user = @user
+    @trip.user = current_user
     if @trip.save
-      redirect_to trips_path(@trip)
+      redirect_to trip_path(@trip)
     else
-      @trips = @user.trips
-      render "trips/show", status: :unprocessable_entity
+      # @trips = @user.trips
+      render "new", status: :unprocessable_entity
     end
   end
 
