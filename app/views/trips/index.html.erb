@@ -1,10 +1,9 @@
-<h1>All Trips</h1>
+<h1>Available Trips</h1>
 
 <div id="trips">
   <% @trips.each do |trip| %>
-  <%#= render trip %>
-  <%= link_to trip.destination, trip %>
+  <li><%= link_to trip.destination, trip_path(trip) %></li>
   <% end %>
 </div>
-
+<br>
 <%= link_to "Create another trip", new_trip_path %>

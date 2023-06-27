@@ -20,10 +20,14 @@
                 required: true,
                 autofocus: true,
                 input_html: { }%>
+    <%= f.input :interests,
+                required: true,
+                autofocus: true,
+                input_html: { }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

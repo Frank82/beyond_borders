@@ -9,6 +9,6 @@ class User < ApplicationRecord
 
          validates :name, presence: true
          validates :age, presence: true
-         validates :nationality, presence: true
+         validates :nationality, inclusion: { in: %w(China South Africa Brazil Morocco) }
          validates :interests, presence: true
 end

@@ -1,0 +1,29 @@
+<body>
+  <div class="container-fluid d-flex">
+    <div class="card" style="--clr: #009688">
+      <div class="img-box">
+        <img src="">
+      </div>
+      <div class="content">
+        <h1><%= @trip.destination %></h1>
+        <h2>Date:<%= @trip.date %></h2>
+        <p>
+          <%= @trip.theme%>
+        </p>
+        <a href="" class="btn btn-primary">Request to join</a>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <%= link_to "Edit this trip", edit_trip_path %>
+  </div>
+  <div>
+    <%= link_to "Delete this trip", trip_path(@trip), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  </div>
+  <div>
+    <%= link_to "Back to all trips", trips_path %>
+  </div>
+</body>
