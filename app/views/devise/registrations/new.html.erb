@@ -9,24 +9,19 @@
                 autofocus: true,
                 input_html: { }%>
     <%= f.input :last_name,
-                required: true,
-                autofocus: true,
                 input_html: { }%>
     <%= f.input :age,
-                required: true,
-                autofocus: true,
                 input_html: { }%>
     <%= f.input :nationality,
+                as: :select,
                 required: true,
                 autofocus: true,
-                input_html: { }%>
+                collection:  %w(China South\ Africa Brazil Morocco) %>
     <%= f.input :interests,
-                required: true,
+                as: :select,
                 autofocus: true,
-                input_html: { }%>
+                collection: %w(Diving Skiing Hiking Swimming) %>
     <%= f.input :email,
-                required: true,
-                autofocus: true,
                 input_html: { }%>
     <%= f.input :password,
                 required: true,

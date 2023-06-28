@@ -4,6 +4,24 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { }%>
+    <%= f.input :last_name,
+                input_html: { }%>
+    <%= f.input :age,
+                input_html: { }%>
+    <%= f.input :nationality,
+                as: :select,
+                required: true,
+                autofocus: true,
+                collection:  %w(China South\ Africa Brazil Morocco) %>
+    <%= f.input :interests,
+                as: :select,
+                autofocus: true,
+                collection: %w(Diving Skiing Hiking Swimming),
+                input_html: { multiple: true } %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
