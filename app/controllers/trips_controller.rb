@@ -17,9 +17,8 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user
     if @trip.save
-      redirect_to trip_path(@trip)
+      redirect_to @trip, notice: "Trip was successfully created."
     else
-      # @trips = @user.trips
       render "new", status: :unprocessable_entity
     end
   end
@@ -29,7 +28,7 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip)
+      redirect_to @trip, notice: "Trip was successfully updated."
     else
       render "edit", status: :unprocessable_entity
     end
@@ -37,7 +36,7 @@ class TripsController < ApplicationController
 
   def destroy
     @trip.destroy
-    redirect_to trips_path, status: :see_other
+    redirect_to trips_path, notice: "Trip was successfully destroyed."
   end
 
   private
@@ -47,6 +46,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:destination, :theme, :date)
+    params.require(:trip).permit(:destination, :theme, :date, :user_id)
   end
 end
