@@ -20,10 +20,14 @@
   <br>
 
   <div>
+    <% if policy(@trip).edit? %>
     <%= link_to "Edit this trip", edit_trip_path %>
+    <% end %>
   </div>
   <div>
+    <% if policy(@trip).destroy? %>
     <%= link_to "Delete this trip", trip_path(@trip), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>
   </div>
   <div>
     <%= link_to "Back to all trips", trips_path %>

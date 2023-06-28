@@ -6,4 +6,6 @@
   <% end %>
 </div>
 <br>
+<% if policy(Trip).new? %>
 <%= link_to "Create another trip", new_trip_path %>
+<% end %>
