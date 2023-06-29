@@ -11,14 +11,14 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
-    # authorize @trip
+    authorize @trip
   end
 
   def create
-    # @user = User.find(params[:user_id])
+    # @user = User.find(params[:id])
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    # authorize @trip
+    authorize @trip
     if @trip.save
       redirect_to @trip, notice: "Trip was successfully created."
     else
