@@ -1,38 +1,26 @@
-  <div class="container justify-center space-y-20">
-    <div class="grid grid-cols-3 gap-4">
-      <div class="flex justify-center col-span-2">
-        <h1 class="text-7xl"><%= @trip.destination %></h1>
-      </div>
-      <div class="content">
-        <h3>Date:<%= @trip.date %></h3>
-        <p>
-          <%= @trip.theme%>
-        </p>
-        <% if policy(@trip).create? %>
-        <a
-          href=""><%= link_to 'Request to join', trip_requests_path(@trip), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %></a>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="container-sm">
-
-    <% if policy(@trip).edit? %>
-    <%= link_to "Edit this trip", edit_trip_path, class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-  <br>
-  <div class="container justify-center space-y-20">
-
-    <% if policy(@trip).destroy? %>
-    <%= link_to "Delete this trip", trip_path(@trip), class: 'btn btn-primary', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>
-  </div>
-  <br>
-  <div class="container justify-center space-y-20">
-
-    <%= link_to "Back to all trips", trips_path, class: 'btn btn-primary' %>
-  </div>
+ <section class="about">
+   <div class="about-img">
+     <img
+       src="https://images.unsplash.com/photo-1567017804517-4e10cd4e890b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80">
+   </div>
+   <div class="about-text">
+     <small></small>
+     <h2><%= @trip.destination %></h2>
+     <p><%= @trip.theme %></p>
+     <p><%= @trip.date %></p>
+     <% if policy(@trip).create? %>
+     <% if Request.find_by(user:current_user, trip:@trip).present? %>
+     <p>Already requested</p>
+     <% else  %>
+     <%= link_to 'Request to join', trip_requests_path(@trip), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
+     <% end %>
+     <% end %>
+     <% if policy(@trip).destroy? %>
+     <%= link_to "Delete this trip", trip_path(@trip),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+     <% end %>
+     <% if policy(@trip).edit? %>
+     <%= link_to "Edit this trip", edit_trip_path %>
+     <% end %>
+     <%= link_to "Back to all trips", trips_path%>
+   </div>
+ </section>

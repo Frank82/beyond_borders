@@ -1,25 +1,24 @@
-        <!--==============Trips of the month===================-->
-        <section class="places">
-          <div class="places-text">
-            <h2>Find your trip or create one</h2>
-          </div>
+        <section class="pages">
+         <div class="places-text">
+           <h2>Find your trip or create one</h2>
+         </div>
 
-          <div class="container">
-            <div class="row mt-5">
-              <% @trips.each do |trip| %>
-              <div class="col-4">
-                <li><%= link_to trip.destination, trip_path(trip) %></li>
-              </div>
-              <% end %>
-            </div>
-            <br>
-            <div class="container">
-              <div class="row mt-1">
-                <% if policy(Trip).new? %>
-                <%= link_to "Create trip", new_trip_path, class:"btn btn-primary" %>
-              </div>
-              <% end %>
-            </div>
-            <br>
-          </div>
-        </section>
+         <div class="container">
+           <div class="row mt-5">
+             <% @trips.each do |trip| %>
+             <div class="col-4">
+               <li><%= link_to trip.destination, trip_path(trip) %></li>
+             </div>
+             <% end %>
+           </div>
+           <br>
+           <div class="container">
+             <div class="row mt-1">
+               <% if policy(Trip).new? %>
+               <%= link_to "Create trip", new_trip_path, class:"btn btn-primary" %>
+             </div>
+             <% end %>
+           </div>
+           <br>
+         </div>
+       </section>
