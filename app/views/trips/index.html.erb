@@ -1,11 +1,25 @@
-<h1>Available Trips</h1>
+        <!--==============Trips of the month===================-->
+        <section class="places">
+          <div class="places-text">
+            <h2>Find your trip or create one</h2>
+          </div>
 
-<div id="trips">
-  <% @trips.each do |trip| %>
-  <li><%= link_to trip.destination, trip_path(trip) %></li>
-  <% end %>
-</div>
-<br>
-<% if policy(Trip).new? %>
-<%= link_to "Create another trip", new_trip_path %>
-<% end %>
+          <div class="container">
+            <div class="row mt-5">
+              <% @trips.each do |trip| %>
+              <div class="col-4">
+                <li><%= link_to trip.destination, trip_path(trip) %></li>
+              </div>
+              <% end %>
+            </div>
+            <br>
+            <div class="container">
+              <div class="row mt-1">
+                <% if policy(Trip).new? %>
+                <%= link_to "Create trip", new_trip_path, class:"btn btn-primary" %>
+              </div>
+              <% end %>
+            </div>
+            <br>
+          </div>
+        </section>

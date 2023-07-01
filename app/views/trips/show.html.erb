@@ -1,35 +1,38 @@
-<body>
-  <div class="container-fluid d-flex">
-    <div class="card" style="--clr: #009688">
-      <div class="img-box">
-        <img src="">
+  <div class="container justify-center space-y-20">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="flex justify-center col-span-2">
+        <h1 class="text-7xl"><%= @trip.destination %></h1>
       </div>
       <div class="content">
-        <strong>User:</strong>
-        <%= @trip.user.first_name %>
-        <h1><%= @trip.destination %></h1>
-        <h2>Date:<%= @trip.date %></h2>
+        <h3>Date:<%= @trip.date %></h3>
         <p>
           <%= @trip.theme%>
         </p>
-        <a href="" class="btn btn-primary">Request to join</a>
+        <% if policy(@trip).create? %>
+        <a
+          href=""><%= link_to 'Request to join', trip_requests_path(@trip), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %></a>
+        <% end %>
       </div>
     </div>
   </div>
 
   <br>
 
-  <div>
+  <div class="container-sm">
+
     <% if policy(@trip).edit? %>
-    <%= link_to "Edit this trip", edit_trip_path %>
+    <%= link_to "Edit this trip", edit_trip_path, class: 'btn btn-primary' %>
     <% end %>
   </div>
-  <div>
+  <br>
+  <div class="container justify-center space-y-20">
+
     <% if policy(@trip).destroy? %>
-    <%= link_to "Delete this trip", trip_path(@trip), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <%= link_to "Delete this trip", trip_path(@trip), class: 'btn btn-primary', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <% end %>
   </div>
-  <div>
-    <%= link_to "Back to all trips", trips_path %>
+  <br>
+  <div class="container justify-center space-y-20">
+
+    <%= link_to "Back to all trips", trips_path, class: 'btn btn-primary' %>
   </div>
-</body>

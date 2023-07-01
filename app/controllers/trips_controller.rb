@@ -6,7 +6,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    # authorize @trip
   end
 
   def new
